@@ -21,7 +21,7 @@ const isAdminRoutes = useLocation().pathname.startsWith("/admin")
     {!isAdminRoutes && <Navbar/>}
     <Routes>
       <Route path='/' element={<Home/>}/>
-        <Route path='/movies' element={<Movies/>}/>
+        <Route path='/movies' element={<Movies />}/>
           <Route path='/movies/:id' element={< MovieDetails/>}/>
                 <Route path='/movies/:id/:date' element={<SeatLayouts/>}/>
                       <Route path='/my-booking' element={<MyBooking/>}/>
