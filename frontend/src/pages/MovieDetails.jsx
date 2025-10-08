@@ -6,14 +6,14 @@ import { Heart, PlayCircle, StarIcon } from 'lucide-react';
 import timeFormat from '../lib/timeFormat';
 import DateSelect from '../component/DateSelect';
 import MovieCard from '../component/MovieCard';
+import Loading from '../component/Loading';
 
 export default function MovieDetails() {
   const { id } = useParams();
   const [show, setShow] = useState(null);
  const navigate = useNavigate()
   useEffect(() => {
-     console.log("Route ID from URL:", id)
-  console.log("All dummy shows:", dummyShowsData)
+
     const selectedShow = dummyShowsData.find(item => String(item._id) === String(id));
 
     if (selectedShow) {
@@ -25,7 +25,7 @@ export default function MovieDetails() {
      
   }, [id]);
 
-  if (!show) return <div>Loading...</div>;
+  if (!show) return <div><Loading/></div>;
 
   const { movie } = show;
  console.log(movie._id)
@@ -103,7 +103,7 @@ export default function MovieDetails() {
   ))}
       </div>
        <div className='flex justify-center mt-20 '>
-        <button onClick={()=>navigate(`/movies/`)} className='px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-md font-medium cursor-pointer'>Show more</button>
+        <button onClick={()=>{navigate(`/movies/`);scrollTo(0,0)}} className='px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-md font-medium cursor-pointer'>Show more</button>
 
        </div>
     </div>
